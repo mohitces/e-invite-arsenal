@@ -357,86 +357,41 @@ function RegistrationContent() {
 
             </div>
 
-            {/* Right Column: Visual Poster & Highlights Card (5 cols) */}
-            <div className="lg:col-span-5 flex flex-col gap-4">
+            {/* Right Column: Visual Poster Showcase (5 cols) */}
+            <div className="lg:col-span-5 h-full flex flex-col">
               
-              {/* Event Logistics Bento Box */}
-              <div className="bg-white/80 rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-xs space-y-4">
-                
-                <h3 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#00bceb]" />
-                  Event Logistics & Schedule
-                </h3>
-
-                <div className="space-y-3 text-xs">
-                  <div className="flex items-start gap-3">
-                    <div className="w-7 h-7 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-slate-700 shrink-0">
-                      📅
-                    </div>
-                    <div>
-                      <div className="font-extrabold text-slate-900">Friday, 18 September 2026</div>
-                      <div className="text-slate-500 text-[11px]">6:00 PM – 8:00 PM IST</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-7 h-7 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-slate-700 shrink-0">
-                      📍
-                    </div>
-                    <div>
-                      <div className="font-extrabold text-slate-900">Sovereign 2, Le Meridien Hotel</div>
-                      <div className="text-slate-500 text-[11px]">Windsor Place, Janpath, New Delhi</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-7 h-7 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-slate-700 shrink-0">
-                      🎙️
-                    </div>
-                    <div>
-                      <div className="font-extrabold text-slate-900">Keynote by Vinod Patani</div>
-                      <div className="text-slate-500 text-[11px]">CEO, Arsenal Infosolutions</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                  <span>🚗 Complimentary Valet Parking</span>
-                  <span className="font-bold text-[#00bceb]">VIP Access</span>
-                </div>
-
-              </div>
-
               {/* 3D Studio Poster Showcase */}
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#03091e] via-[#0b257c] to-[#00bceb] p-6 text-white shadow-xl min-h-[220px] flex flex-col justify-between border border-cyan-400/20">
+              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#03091e] via-[#0b257c] to-[#00bceb] p-7 sm:p-8 text-white shadow-xl min-h-[380px] lg:min-h-[440px] flex flex-col justify-between border border-cyan-400/20">
                 
                 {/* Background Studio Poster Image */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay pointer-events-none"
+                  className="absolute inset-0 bg-cover bg-center opacity-45 mix-blend-overlay pointer-events-none"
                   style={{ backgroundImage: `url('/ai-poster.jpg')` }}
                 />
                 
                 {/* Floating 3D ambient orbs inside the poster */}
-                <div className="absolute top-6 right-5 w-14 h-14 rounded-full sphere-3d-yellow opacity-75 blur-[1px] pointer-events-none" />
-                <div className="absolute bottom-12 left-3 w-10 h-10 rounded-full sphere-3d-red opacity-80 blur-[1px] pointer-events-none" />
+                <div className="absolute top-8 right-6 w-16 h-16 rounded-full sphere-3d-yellow opacity-75 blur-[1px] pointer-events-none" />
+                <div className="absolute bottom-16 left-4 w-12 h-12 rounded-full sphere-3d-red opacity-80 blur-[1px] pointer-events-none" />
 
                 {/* Card Top Details */}
-                <div className="relative z-10">
-                  <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide uppercase mb-3 border border-white/20">
-                    <span>Executive Roundtable</span>
+                <div className="relative z-10 space-y-3">
+                  <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase border border-white/20">
+                    <span>Executive Roundtable 2026</span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-extrabold tracking-tight leading-snug">
+                  
+                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-snug">
                     Trusted AI for a New Digital India
                   </h3>
-                  <p className="text-[11px] text-cyan-100/90 mt-1.5 leading-relaxed">
-                    Join industry leaders as we explore AI strategies, secure networking, Splunk SOC, and intelligent infrastructure.
+                  
+                  <p className="text-xs sm:text-sm text-cyan-100/90 leading-relaxed font-normal pt-1">
+                    Join enterprise technology leaders as we explore sovereign AI strategies, intelligent networking, modern Splunk autonomous SOC, and next-generation secure infrastructure.
                   </p>
                 </div>
 
                 {/* Card Footer Badge */}
-                <div className="relative z-10 pt-3 flex items-center justify-between text-[10px] text-cyan-100/80 border-t border-white/10">
-                  <span>Hosted by Team AIPL</span>
-                  <span className="font-semibold text-white">Arsenal | Cisco</span>
+                <div className="relative z-10 pt-4 flex items-center justify-between text-xs text-cyan-100/80 border-t border-white/10">
+                  <span className="font-semibold">Hosted by Team AIPL</span>
+                  <span className="font-extrabold text-white tracking-wider">Arsenal | Cisco</span>
                 </div>
 
               </div>
