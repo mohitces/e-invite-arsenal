@@ -8,12 +8,30 @@ export interface EmailTemplate {
   generateHtml: (data: { name?: string; email?: string; department?: string; registrationUrl?: string }) => string;
 }
 
-const getRegUrl = (customUrl?: string) => {
-  if (customUrl) return customUrl;
-  if (typeof window !== 'undefined') {
-    return `${window.location.origin}/e-invite`;
+const getRegUrl = (customUrl?: string, email?: string, name?: string, department?: string) => {
+  let baseUrl = customUrl;
+  if (!baseUrl) {
+    if (typeof window !== 'undefined') {
+      baseUrl = `${window.location.origin}/e-invite`;
+    } else {
+      baseUrl = process.env.NEXT_PUBLIC_APP_URL ? `${process.env.NEXT_PUBLIC_APP_URL}/e-invite` : 'http://localhost:3000/e-invite';
+    }
   }
-  return process.env.NEXT_PUBLIC_APP_URL ? `${process.env.NEXT_PUBLIC_APP_URL}/e-invite` : 'http://localhost:3000/e-invite';
+
+  const params = new URLSearchParams();
+  if (email && email.includes('@') && !email.includes('delegate@enterprise.com')) {
+    params.set('email', email.trim());
+  }
+  if (name && !name.includes('Distinguished') && !name.includes('Test Delegate')) {
+    params.set('name', name.trim());
+  }
+  if (department && !department.includes('Executive Leadership') && !department.includes('IT & Cybersecurity') && !department.includes('Enterprise Technology') && !department.includes('Leadership Team')) {
+    params.set('department', department.trim());
+  }
+
+  const qs = params.toString();
+  if (!qs) return baseUrl;
+  return baseUrl.includes('?') ? `${baseUrl}&${qs}` : `${baseUrl}?${qs}`;
 };
 
 export const emailTemplates: EmailTemplate[] = [
@@ -33,7 +51,7 @@ export const emailTemplates: EmailTemplate[] = [
       department = 'Executive Leadership',
       registrationUrl
     }) => {
-      const regUrl = getRegUrl(registrationUrl);
+      const regUrl = getRegUrl(registrationUrl, email, name, department);
       return `
 <!DOCTYPE html>
 <html>
