@@ -4,6 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Trusted AI for a New Digital India | Arsenal & Cisco",
   description: "Exclusive Event Registration - 18 September 2026 | Le Meridien Delhi",
+  icons: {
+    icon: "/arsenal-logo.jpg",
+    shortcut: "/arsenal-logo.jpg",
+    apple: "/arsenal-logo.jpg",
+  },
 };
 
 export default function RootLayout({
