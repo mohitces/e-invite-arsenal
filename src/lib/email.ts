@@ -20,8 +20,27 @@ const isSmtpConfigured = () => {
   );
 };
 
+const getFromAddress = () => {
+  const fromEnv = process.env.SMTP_FROM || process.env.SMTP_USER || 'events@aipl.com';
+  
+  // Parse format like "Display Name <email@domain.com>" or "email@domain.com"
+  const match = fromEnv.match(/^(?:"?([^<"]*)"?\s*)?<?([^>]+@[^>]+)>?$/);
+  if (match) {
+    const rawName = match[1] || 'Arsenal and Cisco Events';
+    // Remove invalid characters like '&' which MailerSend rejects
+    const cleanName = rawName.replace(/&/g, 'and').replace(/[^a-zA-Z0-9\s\-_.]/g, '').trim();
+    const address = match[2].trim();
+    return { name: cleanName || 'Arsenal and Cisco Events', address };
+  }
+
+  return {
+    name: 'Arsenal and Cisco Events',
+    address: fromEnv.trim(),
+  };
+};
+
 export const sendApprovalEmail = async (to: string, name: string, department: string = 'IT & Enterprise') => {
-  const template = emailTemplates.find(t => t.id === 'vip-pass') || emailTemplates[0];
+  const template = emailTemplates.find(t => t.id === 'clay-bento') || emailTemplates[0];
   const html = template.generateHtml({ name, email: to, department });
   const subject = template.subject;
 
@@ -34,7 +53,7 @@ export const sendApprovalEmail = async (to: string, name: string, department: st
   }
 
   const info = await transporter.sendMail({
-    from: `"Team AIPL" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+    from: getFromAddress(),
     to,
     subject,
     html,
@@ -66,7 +85,7 @@ export const sendTemplateEmail = async (
   }
 
   const info = await transporter.sendMail({
-    from: `"Team AIPL" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+    from: getFromAddress(),
     to,
     subject,
     html,
