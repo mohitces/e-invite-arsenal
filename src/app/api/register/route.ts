@@ -31,16 +31,19 @@ export async function POST(request: Request) {
     }
 
     const newRegistration = await Registration.create({
-      name,
-      phone,
-      email,
-      department,
-      description: description || '',
+      name: name.trim(),
+      phone: phone.trim(),
+      email: email.trim().toLowerCase(),
+      department: department.trim(),
+      description: description?.trim() || '',
     });
 
     return NextResponse.json({ success: true, data: newRegistration }, { status: 201 });
   } catch (error: any) {
     console.error('Error during registration:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ 
+      error: error.message || 'Internal Server Error',
+      details: process.env.NODE_ENV !== 'production' ? error.stack : undefined 
+    }, { status: 500 });
   }
 }

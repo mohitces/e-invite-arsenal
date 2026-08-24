@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 import dns from "node:dns";
 
-// Fix querySrv ECONNREFUSED on macOS / local DNS resolvers
-try {
-  dns.setServers(["8.8.8.8", "8.8.4.4", "1.1.1.1"]);
-} catch (err) {
-  console.warn("Could not set custom DNS servers:", err);
+// Fix querySrv ECONNREFUSED on local macOS resolvers
+if (process.env.NODE_ENV !== "production") {
+  try {
+    dns.setServers(["8.8.8.8", "8.8.4.4", "1.1.1.1"]);
+  } catch (err) {
+    console.warn("Could not set custom DNS servers:", err);
+  }
 }
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
@@ -28,14 +30,15 @@ async function connectToDatabase() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      serverSelectionTimeoutMS: 5000,
     };
 
     if (!MONGODB_URI) {
-       return null; // Don't crash at build time
+      throw new Error("MONGODB_URI environment variable is missing.");
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance) => {
+      return mongooseInstance;
     });
   }
   
