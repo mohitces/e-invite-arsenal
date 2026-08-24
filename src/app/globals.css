@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    letter-spacing: -0.01em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 9s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(-3deg);
+  }
+}
+
+.animate-float-reverse {
+  animation: floatReverse 8.5s ease-in-out infinite;
+}
+
+@keyframes floatPeach {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-10px, -8px) scale(1.06);
+  }
+}
+
+.animate-float-peach {
+  animation: floatPeach 6s ease-in-out infinite;
+}
+
+@keyframes morphClay {
+  0%, 100% {
+    border-radius: 140px 180px 130px 170px;
+    transform: rotate(-12deg) scale(1);
+  }
+  50% {
+    border-radius: 170px 130px 180px 140px;
+    transform: rotate(-7deg) scale(1.04);
+  }
+}
+
+.animate-morph-clay {
+  animation: morphClay 12s ease-in-out infinite;
+}
+
+@keyframes ambientMesh {
+  0%, 100% {
+    transform: scale(1) translate(0%, 0%);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.15) translate(4%, -3%);
+    opacity: 0.7;
+  }
+}
+
+.animate-ambient-mesh {
+  animation: ambientMesh 14s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* 3D Realistic Clay Sphere Shading */
+.sphere-3d-yellow {
+  background: radial-gradient(circle at 32% 28%, #fffde7 0%, #fff59d 25%, #fbc02d 60%, #f57f17 85%, #b26a00 100%);
+  box-shadow: 
+    inset -8px -8px 18px rgba(130, 75, 0, 0.35),
+    inset 5px 5px 12px rgba(255, 255, 255, 0.8),
+    14px 20px 32px rgba(80, 50, 20, 0.22),
+    4px 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.sphere-3d-red {
+  background: radial-gradient(circle at 32% 28%, #ff8a8a 0%, #f87171 25%, #ef4444 55%, #b91c1c 85%, #631212 100%);
+  box-shadow: 
+    inset -10px -10px 22px rgba(90, 10, 10, 0.45),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.6),
+    18px 26px 40px rgba(70, 15, 15, 0.25),
+    6px 10px 16px rgba(0, 0, 0, 0.15);
+}
+
+.sphere-3d-peach {
+  background: radial-gradient(circle at 32% 28%, #ffedd5 0%, #fed7aa 30%, #fba36e 65%, #c2410c 90%, #7c2d12 100%);
+  box-shadow: 
+    inset -6px -6px 14px rgba(124, 45, 18, 0.35),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.7),
+    10px 14px 24px rgba(80, 40, 10, 0.2);
+}
+
+.sphere-3d-cyan {
+  background: radial-gradient(circle at 32% 28%, #cffafe 0%, #7dd3fc 25%, #00bceb 55%, #0284c7 85%, #075985 100%);
+  box-shadow: 
+    inset -8px -8px 18px rgba(3, 105, 161, 0.4),
+    inset 5px 5px 12px rgba(255, 255, 255, 0.8),
+    14px 20px 30px rgba(2, 132, 199, 0.25);
+}
+
+.sphere-3d-navy {
+  background: radial-gradient(circle at 32% 28%, #60a5fa 0%, #2563eb 30%, #0b257c 65%, #041240 90%, #020822 100%);
+  box-shadow: 
+    inset -8px -8px 18px rgba(2, 6, 23, 0.6),
+    inset 5px 5px 12px rgba(255, 255, 255, 0.4),
+    14px 20px 30px rgba(11, 37, 124, 0.3);
 }
