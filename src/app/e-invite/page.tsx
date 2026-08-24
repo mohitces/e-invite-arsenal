@@ -145,7 +145,7 @@ function RegistrationContent() {
 
       {/* Main Container */}
       <div className="relative z-10 w-full max-w-5xl">
-        <div className="clay-card rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-12 transition-all duration-300">
+        <div className="clay-card bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_25px_70px_rgba(0,0,0,0.08)] rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-12 transition-all duration-300">
           
           {/* Top Branded Header Capsule */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-200/80">
@@ -234,7 +234,7 @@ function RegistrationContent() {
                       value={formData.name}
                       onChange={handleChange}
                       onBlur={() => handleBlur('name')}
-                      className={`clay-input w-full px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition ${
+                      className={`clay-input w-full bg-slate-50 border border-slate-200 focus:bg-white focus:border-[#00bceb] focus:ring-2 focus:ring-[#00bceb]/20 px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition shadow-xs ${
                         touched.name && errors.name ? 'border-rose-400 focus:border-rose-500' : ''
                       }`}
                     />
@@ -258,7 +258,7 @@ function RegistrationContent() {
                         value={formData.email}
                         onChange={handleChange}
                         onBlur={() => handleBlur('email')}
-                        className={`clay-input w-full px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition ${
+                        className={`clay-input w-full bg-slate-50 border border-slate-200 focus:bg-white focus:border-[#00bceb] focus:ring-2 focus:ring-[#00bceb]/20 px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition shadow-xs ${
                           touched.email && errors.email ? 'border-rose-400 focus:border-rose-500' : ''
                         }`}
                       />
@@ -279,7 +279,7 @@ function RegistrationContent() {
                         value={formData.phone}
                         onChange={handleChange}
                         onBlur={() => handleBlur('phone')}
-                        className={`clay-input w-full px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition ${
+                        className={`clay-input w-full bg-slate-50 border border-slate-200 focus:bg-white focus:border-[#00bceb] focus:ring-2 focus:ring-[#00bceb]/20 px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition shadow-xs ${
                           touched.phone && errors.phone ? 'border-rose-400 focus:border-rose-500' : ''
                         }`}
                       />
@@ -302,7 +302,7 @@ function RegistrationContent() {
                       value={formData.department}
                       onChange={handleChange}
                       onBlur={() => handleBlur('department')}
-                      className={`clay-input w-full px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition ${
+                      className={`clay-input w-full bg-slate-50 border border-slate-200 focus:bg-white focus:border-[#00bceb] focus:ring-2 focus:ring-[#00bceb]/20 px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition shadow-xs ${
                         touched.department && errors.department ? 'border-rose-400 focus:border-rose-500' : ''
                       }`}
                     />
@@ -322,7 +322,7 @@ function RegistrationContent() {
                       placeholder="Any specific questions on Cisco AI architecture or Splunk SOC integration..."
                       value={formData.description}
                       onChange={handleChange}
-                      className="clay-input w-full px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition"
+                      className="clay-input w-full bg-slate-50 border border-slate-200 focus:bg-white focus:border-[#00bceb] focus:ring-2 focus:ring-[#00bceb]/20 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none transition shadow-xs"
                     />
                   </div>
 
@@ -339,7 +339,7 @@ function RegistrationContent() {
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="clay-btn-gradient w-full py-3.5 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                      className="clay-btn-gradient w-full py-3.5 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer bg-gradient-to-r from-[#00bceb] via-[#049fd9] to-[#0b257c] hover:opacity-95 shadow-lg shadow-cyan-500/25"
                     >
                       {status === 'loading' ? (
                         <>
