@@ -20,22 +20,25 @@ const isSmtpConfigured = () => {
   );
 };
 
-const getFromAddress = () => {
-  const fromEnv = process.env.SMTP_FROM || process.env.SMTP_USER || 'events@aipl.com';
-  
-  // Parse format like "Display Name <email@domain.com>" or "email@domain.com"
-  const match = fromEnv.match(/^(?:"?([^<"]*)"?\s*)?<?([^>]+@[^>]+)>?$/);
-  if (match) {
-    const rawName = match[1] || 'Arsenal and Cisco Events';
-    // Remove invalid characters like '&' which MailerSend rejects
-    const cleanName = rawName.replace(/&/g, 'and').replace(/[^a-zA-Z0-9\s\-_.]/g, '').trim();
-    const address = match[2].trim();
-    return { name: cleanName || 'Arsenal and Cisco Events', address };
+const getFromConfig = () => {
+  const raw = (process.env.SMTP_FROM || process.env.SMTP_USER || 'events@aipl.com').trim();
+  // Strip outer quotes if pasted with quotes like '"Name <email>"'
+  const cleaned = raw.replace(/^["']+|["']+$/g, '').trim();
+
+  // Match email address inside <...> or raw
+  const emailMatch = cleaned.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
+  const emailAddress = emailMatch ? emailMatch[1].trim() : (process.env.SMTP_USER || 'events@aipl.com').trim();
+
+  // Extract display name if present
+  let displayName = 'Arsenal and Cisco Events';
+  const namePart = cleaned.replace(/<[^>]+>/, '').replace(/^["']+|["']+$/g, '').trim();
+  if (namePart) {
+    displayName = namePart.replace(/&/g, 'and').replace(/[^a-zA-Z0-9\s\-_.]/g, '').trim();
   }
 
   return {
-    name: 'Arsenal and Cisco Events',
-    address: fromEnv.trim(),
+    name: displayName || 'Arsenal and Cisco Events',
+    address: emailAddress,
   };
 };
 
@@ -52,9 +55,15 @@ export const sendApprovalEmail = async (to: string, name: string, department: st
     return true; 
   }
 
+  const fromObj = getFromConfig();
+
   const info = await transporter.sendMail({
-    from: getFromAddress(),
-    to,
+    from: fromObj,
+    envelope: {
+      from: fromObj.address,
+      to: [to.trim()],
+    },
+    to: to.trim(),
     subject,
     html,
   });
@@ -84,9 +93,15 @@ export const sendTemplateEmail = async (
     return { success: true, mode: 'mock', note: 'Mock mode: Configure valid SMTP credentials in .env.local to send live emails.' };
   }
 
+  const fromObj = getFromConfig();
+
   const info = await transporter.sendMail({
-    from: getFromAddress(),
-    to,
+    from: fromObj,
+    envelope: {
+      from: fromObj.address,
+      to: [to.trim()],
+    },
+    to: to.trim(),
     subject,
     html,
   });
