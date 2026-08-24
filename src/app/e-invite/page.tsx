@@ -148,7 +148,7 @@ function RegistrationContent() {
         <div className="clay-card bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_25px_70px_rgba(0,0,0,0.08)] rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-12 transition-all duration-300">
           
           {/* Top Branded Header Capsule */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-200/80">
+          <div className="flex items-center justify-center sm:justify-start pb-8 mb-8 border-b border-slate-200/80">
             <div className="flex items-center gap-4 bg-white/70 px-5 py-2.5 rounded-full border border-slate-100 shadow-xs backdrop-blur-xs">
               <Image 
                 src="/arsenal-logo.jpg" 
@@ -169,14 +169,6 @@ function RegistrationContent() {
                 style={{ width: 'auto', height: 'auto' }}
                 className="object-contain" 
               />
-            </div>
-
-            <div className="text-center sm:text-right">
-              <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 font-bold px-3 py-1 rounded-full text-xs border border-emerald-200/60 shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Executive Roundtable 2026
-              </span>
-              <p className="text-[11px] text-slate-500 font-semibold mt-1">18 September 2026 • Le Meridien Delhi</p>
             </div>
           </div>
 
@@ -375,10 +367,6 @@ function RegistrationContent() {
 
                 {/* Card Top Details */}
                 <div className="relative z-10 space-y-3">
-                  <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase border border-white/20">
-                    <span>Executive Roundtable 2026</span>
-                  </div>
-                  
                   <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-snug">
                     Trusted AI for a New Digital India
                   </h3>
