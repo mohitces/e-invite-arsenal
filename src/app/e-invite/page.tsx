@@ -131,7 +131,7 @@ function RegistrationContent() {
       <div className="fixed -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#0b257c]/20 via-[#0b257c]/5 to-transparent blur-[120px] pointer-events-none animate-pulse-slow" />
       <div className="fixed top-1/2 left-1/3 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-orange-400/10 to-pink-500/10 blur-[130px] pointer-events-none" />
 
-      {/* Floating 3D Geometric Aesthetic Shapes (matching clay studio poster style) */}
+      {/* Floating 3D Geometric Aesthetic Shapes */}
       <div className="fixed top-8 left-10 w-24 h-24 rounded-full sphere-3d-cyan opacity-80 pointer-events-none animate-float hidden md:block" />
       <div className="fixed bottom-12 left-1/4 w-16 h-16 rounded-full sphere-3d-yellow opacity-75 pointer-events-none animate-float-delayed hidden md:block" />
       <div className="fixed top-1/4 right-8 w-28 h-28 rounded-full sphere-3d-navy opacity-85 pointer-events-none animate-float hidden lg:block" />
@@ -147,48 +147,54 @@ function RegistrationContent() {
       <div className="relative z-10 w-full max-w-5xl">
         <div className="clay-card bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_25px_70px_rgba(0,0,0,0.08)] rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-12 transition-all duration-300">
           
-          {/* Top Branded Header Capsule */}
-          <div className="flex items-center justify-center sm:justify-start pb-8 mb-8 border-b border-slate-200/80">
-            <div className="flex items-center gap-4 bg-white/70 px-5 py-2.5 rounded-full border border-slate-100 shadow-xs backdrop-blur-xs">
-              <Image 
-                src="/arsenal-logo.jpg" 
-                alt="Arsenal Logo" 
-                width={120} 
-                height={38} 
-                priority
-                style={{ width: 'auto', height: 'auto' }}
-                className="object-contain" 
-              />
-              <div className="h-6 w-px bg-slate-300" />
-              <Image 
-                src="/cisco-logo.png" 
-                alt="Cisco Logo" 
-                width={90} 
-                height={38} 
-                priority
-                style={{ width: 'auto', height: 'auto' }}
-                className="object-contain" 
-              />
+          {/* Top Section: Logo + Heading + Subtitle */}
+          <div className="pb-8 mb-8 border-b border-slate-200/80 space-y-4">
+            
+            {/* Logo Capsule */}
+            <div className="flex items-center justify-center sm:justify-start">
+              <div className="flex items-center gap-4 bg-white/80 px-5 py-2.5 rounded-full border border-slate-100 shadow-xs backdrop-blur-xs">
+                <Image 
+                  src="/arsenal-logo.jpg" 
+                  alt="Arsenal Logo" 
+                  width={120} 
+                  height={38} 
+                  priority
+                  style={{ width: 'auto', height: 'auto' }}
+                  className="object-contain" 
+                />
+                <div className="h-6 w-px bg-slate-300" />
+                <Image 
+                  src="/cisco-logo.png" 
+                  alt="Cisco Logo" 
+                  width={90} 
+                  height={38} 
+                  priority
+                  style={{ width: 'auto', height: 'auto' }}
+                  className="object-contain" 
+                />
+              </div>
             </div>
+
+            {/* Heading and Content */}
+            <div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Trusted AI for a New Digital India
+              </h1>
+              <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed font-normal">
+                Reserve your executive seat for the exclusive Cisco & Arsenal leadership summit on next-generation artificial intelligence, enterprise resilience, and modern SOC architectures.
+              </p>
+            </div>
+
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Aligned 2-Column Grid (Form on Left | Poster Image on Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
-            {/* Left Column: Form (7 cols) */}
+            {/* Left Column: Registration Form (7 cols) */}
             <div className="lg:col-span-7 flex flex-col justify-between">
               
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                  Trusted AI for a New Digital India
-                </h1>
-                
-                <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-normal">
-                  Reserve your executive seat for the exclusive Cisco & Arsenal leadership summit on next-generation artificial intelligence, enterprise resilience, and modern SOC architectures.
-                </p>
-              </div>
-
               {status === 'success' ? (
-                <div className="mt-8 bg-emerald-50 border border-emerald-200/80 rounded-3xl p-8 text-center space-y-3 animate-fadeIn shadow-xs">
+                <div className="h-full flex flex-col justify-center bg-emerald-50 border border-emerald-200/80 rounded-3xl p-8 text-center space-y-3 animate-fadeIn shadow-xs">
                   <div className="w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto text-2xl shadow-lg shadow-emerald-500/25">
                     ✓
                   </div>
@@ -212,7 +218,7 @@ function RegistrationContent() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="mt-6 space-y-4 sm:space-y-4.5" noValidate>
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                   
                   {/* Full Name */}
                   <div>
@@ -349,11 +355,11 @@ function RegistrationContent() {
 
             </div>
 
-            {/* Right Column: Visual Poster Showcase (5 cols) */}
-            <div className="lg:col-span-5 h-full flex flex-col">
+            {/* Right Column: Visual Poster Showcase (5 cols) Aligned to Form */}
+            <div className="lg:col-span-5 flex flex-col">
               
               {/* 3D Studio Poster Showcase */}
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#03091e] via-[#0b257c] to-[#00bceb] p-7 sm:p-8 text-white shadow-xl min-h-[380px] lg:min-h-[440px] flex flex-col justify-between border border-cyan-400/20">
+              <div className="relative h-full min-h-[380px] rounded-3xl overflow-hidden bg-gradient-to-br from-[#03091e] via-[#0b257c] to-[#00bceb] p-7 sm:p-8 text-white shadow-xl flex flex-col justify-between border border-cyan-400/20">
                 
                 {/* Background Studio Poster Image */}
                 <div 
@@ -367,12 +373,16 @@ function RegistrationContent() {
 
                 {/* Card Top Details */}
                 <div className="relative z-10 space-y-3">
+                  <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase border border-white/20">
+                    VIP Delegate Access
+                  </span>
+                  
                   <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-snug">
-                    Trusted AI for a New Digital India
+                    AI Evolution & Cybernetic Harmony
                   </h3>
                   
                   <p className="text-xs sm:text-sm text-cyan-100/90 leading-relaxed font-normal pt-1">
-                    Join enterprise technology leaders as we explore sovereign AI strategies, intelligent networking, modern Splunk autonomous SOC, and next-generation secure infrastructure.
+                    Explore sovereign AI architectures, high-performance secure networks, and autonomous Splunk SOC defense for India's digital future.
                   </p>
                 </div>
 
