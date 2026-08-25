@@ -43,7 +43,7 @@ const getFromConfig = () => {
 };
 
 export const sendApprovalEmail = async (to: string, name: string, department: string = 'IT & Enterprise') => {
-  const template = emailTemplates.find(t => t.id === 'clay-bento') || emailTemplates[0];
+  const template = emailTemplates.find(t => t.id === 'vip-approved') || emailTemplates[0];
   const html = template.generateHtml({ name, email: to, department });
   const subject = template.subject;
 

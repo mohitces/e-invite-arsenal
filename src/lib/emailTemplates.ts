@@ -635,5 +635,154 @@ export const emailTemplates: EmailTemplate[] = [
 </html>
       `;
     }
+  },
+  // -------------------------------------------------------------
+  // TEMPLATE 5: VIP Pass Approved
+  // -------------------------------------------------------------
+  {
+    id: 'vip-approved',
+    name: 'VIP Pass Approved',
+    category: 'Post-Registration Approval',
+    designStyle: 'Confirmed Ticket Aesthetic',
+    subject: 'VIP Pass Confirmed: Trusted AI for a New Digital India | 18 September 2026',
+    description: 'Email sent when an admin approves a registration. Shows a confirmed status without the registration link.',
+    generateHtml: ({ 
+      name = 'Distinguished Delegate', 
+      email = 'delegate@enterprise.com', 
+      department = 'IT & Cybersecurity',
+    }) => {
+      return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Delegate Pass Confirmed</title>
+  <style>
+    body { margin: 0; padding: 24px 12px; background-color: #f3efe6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
+    .header { background: linear-gradient(135deg, #03091e 0%, #0b257c 55%, #00bceb 100%); padding: 40px 28px; text-align: center; color: #ffffff; }
+    .brand-capsule { display: inline-block; background: #ffffff; padding: 8px 22px; border-radius: 20px; margin-bottom: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    .bento-card { background: #faf9f5; border: 1.5px solid #059669; border-radius: 24px; padding: 22px; margin: 24px 0; box-shadow: 0 10px 25px rgba(5, 150, 105, 0.1); }
+    .agenda-box { background: #ffffff; border: 1px solid #f1f5f9; border-radius: 20px; padding: 18px; margin: 18px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .agenda-row { border-bottom: 1px solid #f8fafc; }
+    .agenda-time { width: 120px; color: #0284c7; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .footer { background: #faf8f5; padding: 24px; text-align: center; font-size: 11px; color: #78716c; border-top: 1px solid #ede8df; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <!-- Top Header -->
+    <div class="header">
+      <div class="brand-capsule">
+        <strong style="color: #0b257c; font-size: 16px; letter-spacing: -0.5px;">arsenal</strong>
+        <span style="color: #cbd5e1; margin: 0 8px;">|</span>
+        <strong style="color: #00bceb; font-size: 16px; letter-spacing: -0.5px;">CISCO</strong>
+      </div>
+      <h1 style="margin: 0; font-size: 25px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.25;">
+        Registration Confirmed
+      </h1>
+      <p style="margin: 8px 0 0; font-size: 13px; color: #e0f2fe; font-weight: 500;">
+        We look forward to hosting you on 18 September 2026.
+      </p>
+    </div>
+
+    <!-- Main Body -->
+    <div style="padding: 34px 28px;">
+      <p style="font-size: 15px; margin-top: 0; color: #0f172a;">Dear <strong>\${name}</strong>,</p>
+      
+      <p style="font-size: 14px; line-height: 1.65; color: #475569;">
+        Your registration has been <strong>successfully approved</strong>. Below are your VIP Delegate Pass details. Please present this email at the registration desk upon arrival.
+      </p>
+
+      <!-- Bento Delegate Pass Card -->
+      <div class="bento-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #a7f3d0; padding-bottom: 14px; margin-bottom: 16px;">
+          <div>
+            <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #065f46; background: #d1fae5; padding: 4px 10px; border-radius: 8px; letter-spacing: 0.5px;">
+              ✓ VIP Pass Confirmed
+            </span>
+            <div style="font-size: 19px; font-weight: 800; color: #0f172a; margin-top: 6px; letter-spacing: -0.3px;">
+              \${name}
+            </div>
+            <div style="font-size: 12px; color: #64748b; font-weight: 500; margin-top: 2px;">
+              \${department} • \${email}
+            </div>
+          </div>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="width: 50%; padding: 8px 6px 8px 0; vertical-align: top;">
+              <div style="background: #ffffff; border: 1px solid #e8e3d8; border-radius: 14px; padding: 12px;">
+                <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">📅 DATE</span>
+                <div style="color: #0f172a; font-weight: 800; font-size: 13px; margin-top: 2px;">Friday, 18 Sept 2026</div>
+              </div>
+            </td>
+            <td style="width: 50%; padding: 8px 0 8px 6px; vertical-align: top;">
+              <div style="background: #ffffff; border: 1px solid #e8e3d8; border-radius: 14px; padding: 12px;">
+                <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">⏰ TIMING</span>
+                <div style="color: #0f172a; font-weight: 800; font-size: 13px; margin-top: 2px;">6:00 PM – 8:00 PM IST</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding-top: 4px;">
+              <div style="background: #ffffff; border: 1px solid #e8e3d8; border-radius: 14px; padding: 12px;">
+                <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">📍 VENUE & HALL</span>
+                <div style="color: #0f172a; font-weight: 800; font-size: 13px; margin-top: 2px;">Sovereign 2, Le Meridien Hotel, Windsor Place, Janpath, New Delhi</div>
+                <div style="font-size: 11px; color: #0284c7; margin-top: 2px; font-weight: 600;">Complimentary Valet Parking Available</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Agenda Timeline Table -->
+      <h3 style="font-size: 15px; color: #0f172a; margin: 24px 0 8px; font-weight: 800;">
+        Executive Schedule
+      </h3>
+
+      <div class="agenda-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr class="agenda-row">
+            <td class="agenda-time" style="padding: 10px 0;">6:00 – 6:10 PM</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by Arsenal</td>
+          </tr>
+          <tr class="agenda-row">
+            <td class="agenda-time" style="padding: 10px 0;">6:10 – 6:30 PM</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Cisco AI Mission & Strategies</strong> for New Digital India</td>
+          </tr>
+          <tr class="agenda-row">
+            <td class="agenda-time" style="padding: 10px 0;">6:30 – 6:50 PM</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Secure Networking</strong> in the AI Era</td>
+          </tr>
+          <tr class="agenda-row">
+            <td class="agenda-time" style="padding: 10px 0;">6:50 – 7:10 PM</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Splunk and Modern Autonomous SOC</strong></td>
+          </tr>
+          <tr>
+            <td class="agenda-time" style="padding: 10px 0;">7:10 – 7:30 PM</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Fireside Chat & Networking Dinner</strong></td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="font-size: 12px; color: #64748b; text-align: center; margin-top: 14px;">
+        Questions or need to update your RSVP? Contact: <a href="mailto:events@aipl.com" style="color: #0284c7; font-weight: bold; text-decoration: none;">events@aipl.com</a>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2026 Arsenal Infosolutions Pvt Ltd & Cisco Systems Inc. All rights reserved.<br/>
+      New Delhi, India
+    </div>
+  </div>
+</body>
+</html>
+      `;
+    }
   }
 ];
