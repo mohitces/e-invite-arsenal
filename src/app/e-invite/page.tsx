@@ -132,9 +132,9 @@ function RegistrationContent() {
       <div className="fixed top-1/2 left-1/3 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-orange-400/10 to-pink-500/10 blur-[130px] pointer-events-none" />
 
       {/* Floating 3D Geometric Aesthetic Shapes */}
-      <div className="fixed top-8 left-10 w-24 h-24 rounded-full sphere-3d-cyan opacity-80 pointer-events-none animate-float hidden md:block" />
+      <div className="fixed top-8 left-10 w-24 h-24 rounded-full sphere-3d-navy opacity-80 pointer-events-none animate-float hidden md:block" />
       <div className="fixed bottom-12 left-1/4 w-16 h-16 rounded-full sphere-3d-yellow opacity-75 pointer-events-none animate-float-delayed hidden md:block" />
-      <div className="fixed top-1/4 right-8 w-28 h-28 rounded-full sphere-3d-navy opacity-85 pointer-events-none animate-float hidden lg:block" />
+      <div className="fixed top-1/4 right-8 w-28 h-28 rounded-full sphere-3d-cyan opacity-85 pointer-events-none animate-float hidden lg:block" />
       <div className="fixed bottom-8 right-16 w-20 h-20 rounded-full sphere-3d-red opacity-80 pointer-events-none animate-float-delayed hidden md:block" />
 
       {/* Background Soft Studio Clay Texture */}
