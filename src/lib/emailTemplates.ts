@@ -34,6 +34,11 @@ const getRegUrl = (customUrl?: string, email?: string, name?: string, department
   return baseUrl.includes('?') ? `${baseUrl}&${qs}` : `${baseUrl}?${qs}`;
 };
 
+const getOrigin = () => {
+  if (typeof window !== 'undefined') return window.location.origin;
+  return process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+};
+
 export const emailTemplates: EmailTemplate[] = [
   // -------------------------------------------------------------
   // TEMPLATE 1: Official Event Invitation (Click to Register)
@@ -530,6 +535,7 @@ export const emailTemplates: EmailTemplate[] = [
       registrationUrl
     }) => {
       const regUrl = getRegUrl(registrationUrl);
+      const origin = getOrigin();
       return `
 <!DOCTYPE html>
 <html>
@@ -541,7 +547,7 @@ export const emailTemplates: EmailTemplate[] = [
     body { margin: 0; padding: 24px 12px; background-color: #f5f5f4; font-family: 'Georgia', serif; color: #1c1917; }
     .wrapper { max-width: 600px; margin: 0 auto; background: #fdfbf7; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #e7e5e4; }
     .header { padding: 44px 32px 28px; text-align: center; border-bottom: 1px solid #e7e5e4; }
-    .monogram-badge { display: inline-block; border: 1px solid #d6d3d1; padding: 6px 18px; border-radius: 4px; margin-bottom: 20px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: #0b257c; background: #ffffff; }
+    .logo-badge { border: 1px solid #d6d3d1; border-radius: 30px; background: #ffffff; margin-bottom: 20px; }
     .agenda-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
     .agenda-table td { padding: 10px 4px; border-bottom: 1px solid #f5f5f4; font-size: 13px; }
     .agenda-time { width: 120px; color: #78716c; font-weight: 700; font-size: 12px; }
@@ -553,9 +559,15 @@ export const emailTemplates: EmailTemplate[] = [
   <div class="wrapper">
     <!-- Header -->
     <div class="header">
-      <div class="monogram-badge">
-        ARSENAL × CISCO
-      </div>
+      <table role="presentation" cellpadding="0" cellspacing="0" class="logo-badge" style="margin: 0 auto 20px;">
+        <tr>
+          <td style="padding: 8px 20px;">
+            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="22" style="height: 22px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <span style="display: inline-block; width: 1px; height: 16px; background: #d6d3d1; margin: 0 12px; vertical-align: middle;"></span>
+            <img src="${origin}/cisco-logo.png" alt="Cisco" height="22" style="height: 22px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+          </td>
+        </tr>
+      </table>
       <h1 style="margin: 0; font-size: 26px; font-weight: normal; letter-spacing: -0.5px; color: #0c0a09; line-height: 1.25;">
         Trusted AI for a New Digital India
       </h1>
@@ -690,7 +702,7 @@ export const emailTemplates: EmailTemplate[] = [
 
     <!-- Main Body -->
     <div style="padding: 34px 28px;">
-      <p style="font-size: 15px; margin-top: 0; color: #0f172a;">Dear <strong>\${name}</strong>,</p>
+      <p style="font-size: 15px; margin-top: 0; color: #0f172a;">Dear <strong>${name}</strong>,</p>
       
       <p style="font-size: 14px; line-height: 1.65; color: #475569;">
         Your registration has been <strong>successfully approved</strong>. Below are your VIP Delegate Pass details. Please present this email at the registration desk upon arrival.
@@ -704,10 +716,10 @@ export const emailTemplates: EmailTemplate[] = [
               ✓ VIP Pass Confirmed
             </span>
             <div style="font-size: 19px; font-weight: 800; color: #0f172a; margin-top: 6px; letter-spacing: -0.3px;">
-              \${name}
+              ${name}
             </div>
             <div style="font-size: 12px; color: #64748b; font-weight: 500; margin-top: 2px;">
-              \${department} • \${email}
+              ${department} • ${email}
             </div>
           </div>
         </div>
