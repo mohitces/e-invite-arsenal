@@ -162,7 +162,7 @@ export default function AdminDashboard() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            templateId: 'invite-register',
+            templateId: 'luxe-editorial',
             recipients: parsedGeneralEmails,
             name: generalData.collectiveGreeting,
             department: 'Technology Leadership',
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            templateId: 'invite-register',
+            templateId: 'luxe-editorial',
             to: personalData.email,
             name: personalData.name,
             department: personalData.department,
@@ -232,7 +232,7 @@ export default function AdminDashboard() {
   };
 
   // Pre-event template
-  const inviteTemplate = emailTemplates.find(t => t.id === 'invite-register') || emailTemplates[0];
+  const inviteTemplate = emailTemplates.find(t => t.id === 'luxe-editorial') || emailTemplates[0];
   const renderedPreEventHtml = inviteTemplate.generateHtml(
     preEventMode === 'general' 
       ? { name: generalData.collectiveGreeting, email: 'delegate@enterprise.com', department: 'Enterprise Technology', registrationUrl: `${currentOrigin}/e-invite` }
@@ -843,7 +843,7 @@ export default function AdminDashboard() {
             
             {/* Design Selector Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
-              {emailTemplates.filter(t => t.id !== 'invite-register').map((tpl, idx) => {
+              {emailTemplates.filter(t => t.id !== 'invite-register' && t.id !== 'luxe-editorial').map((tpl, idx) => {
                 const isSelected = selectedPassDesign === tpl.id;
                 return (
                   <button

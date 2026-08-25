@@ -21,7 +21,7 @@ export async function POST(
       return NextResponse.json({ error: 'User must be approved to send invite' }, { status: 400 });
     }
 
-    await sendApprovalEmail(registration.email, registration.name);
+    await sendApprovalEmail(registration.email, registration.name, registration.department);
 
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error: any) {

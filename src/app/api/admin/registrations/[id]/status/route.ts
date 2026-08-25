@@ -29,7 +29,7 @@ export async function PATCH(
     // If approved, send the email
     if (status === 'Approved') {
       try {
-        await sendApprovalEmail(registration.email, registration.name);
+        await sendApprovalEmail(registration.email, registration.name, registration.department);
       } catch (emailError) {
         console.error('Failed to send approval email:', emailError);
         // We still return success but maybe warn about email failure
