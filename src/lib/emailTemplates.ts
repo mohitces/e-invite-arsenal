@@ -34,7 +34,14 @@ const getRegUrl = (customUrl?: string, email?: string, name?: string, department
   return baseUrl.includes('?') ? `${baseUrl}&${qs}` : `${baseUrl}?${qs}`;
 };
 
-const getOrigin = () => {
+const getOrigin = (customUrl?: string) => {
+  if (customUrl) {
+    try {
+      return new URL(customUrl).origin;
+    } catch {
+      // fall through to other strategies
+    }
+  }
   if (typeof window !== 'undefined') return window.location.origin;
   return process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 };
@@ -224,7 +231,7 @@ export const emailTemplates: EmailTemplate[] = [
       department = 'IT & Cybersecurity',
       registrationUrl
     }) => {
-      const regUrl = getRegUrl(registrationUrl);
+      const regUrl = getRegUrl(registrationUrl, email, name, department);
       return `
 <!DOCTYPE html>
 <html>
@@ -403,7 +410,7 @@ export const emailTemplates: EmailTemplate[] = [
       department = 'Enterprise Technology',
       registrationUrl
     }) => {
-      const regUrl = getRegUrl(registrationUrl);
+      const regUrl = getRegUrl(registrationUrl, email, name, department);
       return `
 <!DOCTYPE html>
 <html>
@@ -534,8 +541,8 @@ export const emailTemplates: EmailTemplate[] = [
       department = 'Leadership Team',
       registrationUrl
     }) => {
-      const regUrl = getRegUrl(registrationUrl);
-      const origin = getOrigin();
+      const regUrl = getRegUrl(registrationUrl, email, name, department);
+      const origin = getOrigin(registrationUrl);
       return `
 <!DOCTYPE html>
 <html>
