@@ -29,7 +29,9 @@ export async function PATCH(
     // If approved, send the email
     if (status === 'Approved') {
       try {
-        await sendApprovalEmail(registration.email, registration.name, registration.department);
+        const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'localhost:3000';
+        const proto = request.headers.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
+        await sendApprovalEmail(registration.email, registration.name, registration.department, `${proto}://${host}`);
       } catch (emailError) {
         console.error('Failed to send approval email:', emailError);
         // We still return success but maybe warn about email failure

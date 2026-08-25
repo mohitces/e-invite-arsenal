@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { emailTemplates } from './emailTemplates';
+import { generateEventIcs } from './ics';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
@@ -42,9 +43,9 @@ const getFromConfig = () => {
   };
 };
 
-export const sendApprovalEmail = async (to: string, name: string, department: string = 'IT & Enterprise') => {
+export const sendApprovalEmail = async (to: string, name: string, department: string = 'IT & Enterprise', appUrl?: string) => {
   const template = emailTemplates.find(t => t.id === 'vip-approved') || emailTemplates[0];
-  const html = template.generateHtml({ name, email: to, department });
+  const html = template.generateHtml({ name, email: to, department, registrationUrl: appUrl });
   const subject = template.subject;
 
   if (!isSmtpConfigured()) {
@@ -57,6 +58,17 @@ export const sendApprovalEmail = async (to: string, name: string, department: st
 
   const fromObj = getFromConfig();
 
+  const ics = generateEventIcs({
+    uid: `${to.trim().toLowerCase().replace('@', '-at-')}-trusted-ai-2026@aipl.com`,
+    summary: 'Trusted AI for a New Digital India',
+    description: 'Executive leadership roundtable hosted by Arsenal Infosolutions and Cisco Systems. Please present your VIP delegate pass email at the registration desk upon arrival.',
+    location: 'Sovereign 2, Le Meridien Hotel, Windsor Place, Janpath, New Delhi',
+    start: new Date('2026-09-18T12:30:00Z'), // 6:00 PM IST
+    end: new Date('2026-09-18T14:30:00Z'), // 8:00 PM IST
+    organizerEmail: fromObj.address,
+    organizerName: fromObj.name,
+  });
+
   const info = await transporter.sendMail({
     from: fromObj,
     envelope: {
@@ -66,6 +78,11 @@ export const sendApprovalEmail = async (to: string, name: string, department: st
     to: to.trim(),
     subject,
     html,
+    icalEvent: {
+      filename: 'trusted-ai-2026.ics',
+      method: 'PUBLISH',
+      content: ics,
+    },
   });
 
   return info;

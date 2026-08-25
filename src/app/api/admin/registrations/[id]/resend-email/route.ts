@@ -21,7 +21,9 @@ export async function POST(
       return NextResponse.json({ error: 'User must be approved to send invite' }, { status: 400 });
     }
 
-    await sendApprovalEmail(registration.email, registration.name, registration.department);
+    const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'localhost:3000';
+    const proto = request.headers.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
+    await sendApprovalEmail(registration.email, registration.name, registration.department, `${proto}://${host}`);
 
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error: any) {

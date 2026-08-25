@@ -64,16 +64,20 @@ export const emailTemplates: EmailTemplate[] = [
       registrationUrl
     }) => {
       const regUrl = getRegUrl(registrationUrl, email, name, department);
+      const origin = getOrigin(registrationUrl);
       return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="x-apple-disable-message-reformatting">
   <title>Executive Event Invitation</title>
   <style>
-    body { margin: 0; padding: 24px 12px; background-color: #f3efe6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; -webkit-font-smoothing: antialiased; }
-    .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
+    body { margin: 0; padding: 24px 12px; background-color: #f3efe6 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b !important; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 600px; margin: 0 auto; background-color: #ffffff !important; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
     .header { background: linear-gradient(135deg, #03091e 0%, #0b257c 55%, #00bceb 100%); padding: 42px 28px; text-align: center; color: #ffffff; }
     .brand-capsule { display: inline-block; background: #ffffff; padding: 8px 22px; border-radius: 20px; margin-bottom: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
     .invite-banner { display: block; background: #faf9f5; border: 2px dashed #00bceb; border-radius: 24px; padding: 24px; margin: 24px 0; text-decoration: none; color: inherit; transition: all 0.2s ease; }
@@ -89,11 +93,15 @@ export const emailTemplates: EmailTemplate[] = [
     
     <!-- Top Branded Header -->
     <div class="header">
-      <div class="brand-capsule">
-        <strong style="color: #0b257c; font-size: 16px; letter-spacing: -0.5px;">arsenal</strong>
-        <span style="color: #cbd5e1; margin: 0 8px;">|</span>
-        <strong style="color: #00bceb; font-size: 16px; letter-spacing: -0.5px;">CISCO</strong>
-      </div>
+      <table role="presentation" cellpadding="0" cellspacing="0" class="brand-capsule" style="margin: 0 auto 18px;">
+        <tr>
+          <td style="padding: 8px 22px;">
+            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="20" style="height: 20px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <span style="display: inline-block; width: 1px; height: 16px; background: #cbd5e1; margin: 0 12px; vertical-align: middle;"></span>
+            <img src="${origin}/cisco-logo.png" alt="Cisco" height="26" style="height: 26px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+          </td>
+        </tr>
+      </table>
       <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.25;">
         Trusted AI for a New Digital India
       </h1>
@@ -146,17 +154,6 @@ export const emailTemplates: EmailTemplate[] = [
         </table>
       </a>
 
-      <!-- Keynote Highlight -->
-      <div style="background: #f0f9ff; border-left: 4px solid #00bceb; border-radius: 14px; padding: 14px 18px; margin: 20px 0;">
-        <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #0284c7;">Keynote Address</span>
-        <div style="font-size: 14px; font-weight: 800; color: #0c4a6e; margin-top: 2px;">
-          Vinod Patani — CEO, Arsenal Infosolutions
-        </div>
-        <p style="font-size: 12px; color: #0369a1; margin: 4px 0 0; line-height: 1.4;">
-          Setting the strategic context for Trusted AI and India's sovereign digital growth.
-        </p>
-      </div>
-
       <!-- Agenda Overview -->
       <h3 style="font-size: 15px; color: #0f172a; margin: 24px 0 8px; font-weight: 800;">
         Executive Schedule & Discussion Topics
@@ -166,7 +163,7 @@ export const emailTemplates: EmailTemplate[] = [
         <table style="width: 100%; border-collapse: collapse;">
           <tr class="agenda-row">
             <td class="agenda-time" style="padding: 10px 0;">6:00 – 6:10 PM</td>
-            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by Arsenal</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by CISCO</td>
           </tr>
           <tr class="agenda-row">
             <td class="agenda-time" style="padding: 10px 0;">6:10 – 6:30 PM</td>
@@ -232,16 +229,20 @@ export const emailTemplates: EmailTemplate[] = [
       registrationUrl
     }) => {
       const regUrl = getRegUrl(registrationUrl, email, name, department);
+      const origin = getOrigin(registrationUrl);
       return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="x-apple-disable-message-reformatting">
   <title>VIP Delegate Pass</title>
   <style>
-    body { margin: 0; padding: 24px 12px; background-color: #f3efe6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; -webkit-font-smoothing: antialiased; }
-    .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
+    body { margin: 0; padding: 24px 12px; background-color: #f3efe6 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b !important; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 600px; margin: 0 auto; background-color: #ffffff !important; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
     .header { background: linear-gradient(135deg, #03091e 0%, #0b257c 55%, #00bceb 100%); padding: 40px 28px; text-align: center; color: #ffffff; }
     .brand-capsule { display: inline-block; background: #ffffff; padding: 8px 22px; border-radius: 20px; margin-bottom: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
     .bento-card { background: #faf9f5; border: 1.5px solid #e8e3d8; border-radius: 24px; padding: 22px; margin: 24px 0; }
@@ -257,11 +258,15 @@ export const emailTemplates: EmailTemplate[] = [
     
     <!-- Top Header -->
     <div class="header">
-      <div class="brand-capsule">
-        <strong style="color: #0b257c; font-size: 16px; letter-spacing: -0.5px;">arsenal</strong>
-        <span style="color: #cbd5e1; margin: 0 8px;">|</span>
-        <strong style="color: #00bceb; font-size: 16px; letter-spacing: -0.5px;">CISCO</strong>
-      </div>
+      <table role="presentation" cellpadding="0" cellspacing="0" class="brand-capsule" style="margin: 0 auto 18px;">
+        <tr>
+          <td style="padding: 8px 22px;">
+            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="20" style="height: 20px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <span style="display: inline-block; width: 1px; height: 16px; background: #cbd5e1; margin: 0 12px; vertical-align: middle;"></span>
+            <img src="${origin}/cisco-logo.png" alt="Cisco" height="26" style="height: 26px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+          </td>
+        </tr>
+      </table>
       <h1 style="margin: 0; font-size: 25px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.25;">
         Trusted AI for a New Digital India
       </h1>
@@ -328,17 +333,6 @@ export const emailTemplates: EmailTemplate[] = [
         </div>
       </a>
 
-      <!-- Keynote Spotlight -->
-      <div style="background: #f0f9ff; border-left: 4px solid #00bceb; border-radius: 14px; padding: 14px 18px; margin: 20px 0;">
-        <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #0284c7; letter-spacing: 0.5px;">Keynote Address</span>
-        <div style="font-size: 14px; font-weight: 800; color: #0c4a6e; margin-top: 2px;">
-          Vinod Patani — CEO, Arsenal Infosolutions
-        </div>
-        <p style="font-size: 12px; color: #0369a1; margin: 4px 0 0; line-height: 1.4;">
-          Setting the strategic context for Trusted AI and India's sovereign digital growth.
-        </p>
-      </div>
-
       <!-- Agenda Timeline Table -->
       <h3 style="font-size: 15px; color: #0f172a; margin: 24px 0 8px; font-weight: 800;">
         Executive Schedule
@@ -348,7 +342,7 @@ export const emailTemplates: EmailTemplate[] = [
         <table style="width: 100%; border-collapse: collapse;">
           <tr class="agenda-row">
             <td class="agenda-time" style="padding: 10px 0;">6:00 – 6:10 PM</td>
-            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by Arsenal</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by CISCO</td>
           </tr>
           <tr class="agenda-row">
             <td class="agenda-time" style="padding: 10px 0;">6:10 – 6:30 PM</td>
@@ -411,16 +405,20 @@ export const emailTemplates: EmailTemplate[] = [
       registrationUrl
     }) => {
       const regUrl = getRegUrl(registrationUrl, email, name, department);
+      const origin = getOrigin(registrationUrl);
       return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="x-apple-disable-message-reformatting">
   <title>Executive VIP Pass</title>
   <style>
-    body { margin: 0; padding: 24px 12px; background-color: #020617; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #f8fafc; }
-    .wrapper { max-width: 600px; margin: 0 auto; background: #0b132b; border-radius: 28px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.6); border: 1px solid #1e293b; }
+    body { margin: 0; padding: 24px 12px; background-color: #020617 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #f8fafc !important; }
+    .wrapper { max-width: 600px; margin: 0 auto; background-color: #0b132b !important; border-radius: 28px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.6); border: 1px solid #1e293b; }
     .header { background: radial-gradient(circle at 50% 0%, #00bceb 0%, #0b257c 60%, #03091e 100%); padding: 40px 28px; text-align: center; }
     .brand-pill { display: inline-block; background: #ffffff; padding: 8px 22px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 0 20px rgba(0, 188, 235, 0.4); }
     .digital-pass { background: #0f172a; border: 1px solid #00bceb; border-radius: 20px; padding: 22px; margin: 24px 0; box-shadow: inset 0 0 20px rgba(0, 188, 235, 0.08); text-decoration: none; color: inherit; display: block; }
@@ -434,11 +432,15 @@ export const emailTemplates: EmailTemplate[] = [
   <div class="wrapper">
     <!-- Header -->
     <div class="header">
-      <div class="brand-pill">
-        <strong style="color: #0b257c; font-size: 16px;">arsenal</strong>
-        <span style="color: #94a3b8; margin: 0 8px;">|</span>
-        <strong style="color: #00bceb; font-size: 16px;">CISCO</strong>
-      </div>
+      <table role="presentation" cellpadding="0" cellspacing="0" class="brand-pill" style="margin: 0 auto 16px;">
+        <tr>
+          <td style="padding: 8px 22px;">
+            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="20" style="height: 20px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <span style="display: inline-block; width: 1px; height: 16px; background: #94a3b8; margin: 0 12px; vertical-align: middle;"></span>
+            <img src="${origin}/cisco-logo.png" alt="Cisco" height="26" style="height: 26px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+          </td>
+        </tr>
+      </table>
       <h1 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;">
         Trusted AI for a New Digital India
       </h1>
@@ -490,10 +492,6 @@ export const emailTemplates: EmailTemplate[] = [
 
       <!-- Agenda -->
       <h3 style="font-size: 15px; color: #ffffff; margin: 24px 0 6px;">Session Timings</h3>
-      <p style="font-size: 13px; color: #94a3b8; margin-top: 0; margin-bottom: 12px;">
-        Keynote by <strong>Vinod Patani (CEO, Arsenal)</strong>: Context setting for Trusted AI architecture.
-      </p>
-
       <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
         <tr class="agenda-row"><td class="agenda-time" style="padding: 10px 0;">6:00 – 6:10 PM</td><td style="font-size: 13px; padding: 10px 0; color: #e2e8f0;">Welcome & Opening Remarks</td></tr>
         <tr class="agenda-row"><td class="agenda-time" style="padding: 10px 0;">6:10 – 6:30 PM</td><td style="font-size: 13px; padding: 10px 0; color: #e2e8f0;">Cisco AI Mission & Strategies for India</td></tr>
@@ -549,10 +547,13 @@ export const emailTemplates: EmailTemplate[] = [
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="x-apple-disable-message-reformatting">
   <title>Executive Invitation</title>
   <style>
-    body { margin: 0; padding: 24px 12px; background-color: #f5f5f4; font-family: 'Georgia', serif; color: #1c1917; }
-    .wrapper { max-width: 600px; margin: 0 auto; background: #fdfbf7; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #e7e5e4; }
+    body { margin: 0; padding: 24px 12px; background-color: #f5f5f4 !important; font-family: 'Georgia', serif; color: #1c1917 !important; }
+    .wrapper { max-width: 600px; margin: 0 auto; background-color: #fdfbf7 !important; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #e7e5e4; }
     .header { padding: 44px 32px 28px; text-align: center; border-bottom: 1px solid #e7e5e4; }
     .logo-badge { border: 1px solid #d6d3d1; border-radius: 30px; background: #ffffff; margin-bottom: 20px; }
     .agenda-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -569,9 +570,9 @@ export const emailTemplates: EmailTemplate[] = [
       <table role="presentation" cellpadding="0" cellspacing="0" class="logo-badge" style="margin: 0 auto 20px;">
         <tr>
           <td style="padding: 8px 20px;">
-            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="22" style="height: 22px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="20" style="height: 20px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
             <span style="display: inline-block; width: 1px; height: 16px; background: #d6d3d1; margin: 0 12px; vertical-align: middle;"></span>
-            <img src="${origin}/cisco-logo.png" alt="Cisco" height="22" style="height: 22px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <img src="${origin}/cisco-logo.png" alt="Cisco" height="26" style="height: 26px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
           </td>
         </tr>
       </table>
@@ -621,12 +622,8 @@ export const emailTemplates: EmailTemplate[] = [
       <h3 style="font-size: 17px; color: #0c0a09; margin: 28px 0 8px; font-weight: normal;">
         Executive Schedule
       </h3>
-      <p style="font-size: 13px; color: #78716c; font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin-top: 0;">
-        <strong>Opening Keynote:</strong> Vinod Patani, CEO — Arsenal Infosolutions
-      </p>
-
       <table class="agenda-table">
-        <tr><td class="agenda-time">6:00 – 6:10 PM</td><td><strong>Welcome & Opening</strong> by Arsenal</td></tr>
+        <tr><td class="agenda-time">6:00 – 6:10 PM</td><td><strong>Welcome & Opening</strong> by CISCO</td></tr>
         <tr><td class="agenda-time">6:10 – 6:30 PM</td><td><strong>Cisco AI Mission & Strategies</strong> for New Digital India</td></tr>
         <tr><td class="agenda-time">6:30 – 6:50 PM</td><td><strong>Secure Networking</strong> in the AI Era</td></tr>
         <tr><td class="agenda-time">6:50 – 7:10 PM</td><td><strong>Splunk & Modern SOC</strong> Architectures</td></tr>
@@ -663,23 +660,28 @@ export const emailTemplates: EmailTemplate[] = [
     name: 'VIP Pass Approved',
     category: 'Post-Registration Approval',
     designStyle: 'Confirmed Ticket Aesthetic',
-    subject: 'VIP Pass Confirmed: Trusted AI for a New Digital India | 18 September 2026',
+    subject: 'Trusted AI for a New Digital India | 18 September 2026',
     description: 'Email sent when an admin approves a registration. Shows a confirmed status without the registration link.',
-    generateHtml: ({ 
-      name = 'Distinguished Delegate', 
-      email = 'delegate@enterprise.com', 
+    generateHtml: ({
+      name = 'Distinguished Delegate',
+      email = 'delegate@enterprise.com',
       department = 'IT & Cybersecurity',
+      registrationUrl
     }) => {
+      const origin = getOrigin(registrationUrl);
       return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="x-apple-disable-message-reformatting">
   <title>VIP Delegate Pass Confirmed</title>
   <style>
-    body { margin: 0; padding: 24px 12px; background-color: #f3efe6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; -webkit-font-smoothing: antialiased; }
-    .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
+    body { margin: 0; padding: 24px 12px; background-color: #f3efe6 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b !important; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 600px; margin: 0 auto; background-color: #ffffff !important; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.09); border: 1px solid #ede8df; }
     .header { background: linear-gradient(135deg, #03091e 0%, #0b257c 55%, #00bceb 100%); padding: 40px 28px; text-align: center; color: #ffffff; }
     .brand-capsule { display: inline-block; background: #ffffff; padding: 8px 22px; border-radius: 20px; margin-bottom: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
     .bento-card { background: #faf9f5; border: 1.5px solid #059669; border-radius: 24px; padding: 22px; margin: 24px 0; box-shadow: 0 10px 25px rgba(5, 150, 105, 0.1); }
@@ -694,11 +696,15 @@ export const emailTemplates: EmailTemplate[] = [
     
     <!-- Top Header -->
     <div class="header">
-      <div class="brand-capsule">
-        <strong style="color: #0b257c; font-size: 16px; letter-spacing: -0.5px;">arsenal</strong>
-        <span style="color: #cbd5e1; margin: 0 8px;">|</span>
-        <strong style="color: #00bceb; font-size: 16px; letter-spacing: -0.5px;">CISCO</strong>
-      </div>
+      <table role="presentation" cellpadding="0" cellspacing="0" class="brand-capsule" style="margin: 0 auto 18px;">
+        <tr>
+          <td style="padding: 8px 22px;">
+            <img src="${origin}/arsenal-logo.jpg" alt="Arsenal" height="20" style="height: 20px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+            <span style="display: inline-block; width: 1px; height: 16px; background: #cbd5e1; margin: 0 12px; vertical-align: middle;"></span>
+            <img src="${origin}/cisco-logo.png" alt="Cisco" height="26" style="height: 26px; width: auto; vertical-align: middle; display: inline-block; border: 0;" />
+          </td>
+        </tr>
+      </table>
       <h1 style="margin: 0; font-size: 25px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.25;">
         Registration Confirmed
       </h1>
@@ -712,16 +718,13 @@ export const emailTemplates: EmailTemplate[] = [
       <p style="font-size: 15px; margin-top: 0; color: #0f172a;">Dear <strong>${name}</strong>,</p>
       
       <p style="font-size: 14px; line-height: 1.65; color: #475569;">
-        Your registration has been <strong>successfully approved</strong>. Below are your VIP Delegate Pass details. Please present this email at the registration desk upon arrival.
+        We are pleased to confirm your registration for the event. Please present this email at the registration desk upon arrival.
       </p>
 
       <!-- Bento Delegate Pass Card -->
       <div class="bento-card">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #a7f3d0; padding-bottom: 14px; margin-bottom: 16px;">
           <div>
-            <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #065f46; background: #d1fae5; padding: 4px 10px; border-radius: 8px; letter-spacing: 0.5px;">
-              ✓ VIP Pass Confirmed
-            </span>
             <div style="font-size: 19px; font-weight: 800; color: #0f172a; margin-top: 6px; letter-spacing: -0.3px;">
               ${name}
             </div>
@@ -767,7 +770,7 @@ export const emailTemplates: EmailTemplate[] = [
         <table style="width: 100%; border-collapse: collapse;">
           <tr class="agenda-row">
             <td class="agenda-time" style="padding: 10px 0;">6:00 – 6:10 PM</td>
-            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by Arsenal</td>
+            <td style="font-size: 13px; padding: 10px 0; color: #1e293b;"><strong>Welcome & Opening Remarks</strong> by CISCO</td>
           </tr>
           <tr class="agenda-row">
             <td class="agenda-time" style="padding: 10px 0;">6:10 – 6:30 PM</td>
